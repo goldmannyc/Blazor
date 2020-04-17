@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Demo.Blazor.Model;
 
-namespace Demo.Blazor.Services {
-    public class Products {
-        public static IList<Product> Load() {
+namespace Demo.Blazor.Services
+{
+    public class Products
+    {
+        public static IList<Product> Load()
+        {
             var dataSource = new List<Product>() {
                 new Product() { Id = "680", Availability = false, ProductCategoryId = 14, ProductName = "HL Road Frame - Black, 58" },
                 new Product() { Id = "706", Availability = true , ProductCategoryId = 14, ProductName = "HL Road Frame - Red, 58" },
@@ -304,6 +307,12 @@ namespace Demo.Blazor.Services {
                 new Product() { Id = "998", Availability = true , ProductCategoryId = 2 , ProductName = "Road-750 Black, 48" },
                 new Product() { Id = "999", Availability = false, ProductCategoryId = 2 , ProductName = "Road-750 Black, 52" },
             };
+            while (true)
+            {
+                dataSource.AddRange(dataSource);
+                if (dataSource.Count() > 50000)
+                    break;
+            }
             return dataSource;
         }
     }
